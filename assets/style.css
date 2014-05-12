@@ -30,14 +30,6 @@ p{
 	color:#00B945;
 }
 
-#container{
-	position: relative;
-	width: 600px;
-	height: 400px;
-	margin-right: auto;
-	margin-left: auto;
-}
-
 .text{
 	cursor: default;
 	font-size: 10pt;
@@ -64,6 +56,13 @@ p{
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////// PAGE ONE ////*/
+
+#container{
+	position: relative;
+	width: 100%;
+	height: 400px;
+
+}
 
 #container img{
 	position: fixed;
@@ -161,6 +160,11 @@ p{
 
 /*////////////////////////////////////////////////////////////////////////////////// PAGE THREE ////*/
 
+#container3 .more{
+	margin-top: 60px;
+	margin-left: 20px;
+}
+
 #phoneBase{
 	width: 300px;
 	height: 530px;
@@ -173,6 +177,7 @@ p{
 }
 
 #phoneScreen{
+	overflow: hidden;
 	width: 260px;
 	margin-left:20px;
 	position: relative;
@@ -217,7 +222,14 @@ p{
 	background: #C1C2BC;
 }
 
-/*////////////////////////////////////////////////////////////////////////////////// PAGE THREE ////*/
+#phoneScreen img{
+	/*border: red 2px solid;*/
+	margin-left: -250px;
+	/*margin-top: -50px;*/
+	margin-top: 25px;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////// PAGE FOUR ////*/
 
 
 #container4{
@@ -228,10 +240,17 @@ p{
 	margin-left: auto;
 }
 
+#container4 h2,
+#container4 h3{
+	margin-left: 0px;
+	margin-top: 20px;
+	margin-bottom: 20px
+}
+
 .blurryText{
 	text-shadow: 0px 0px 0px #000;
 	color: transparent;
-	/*background-color: blue;*/
+	background: white;
  	transition: all 1s;
 }
 
