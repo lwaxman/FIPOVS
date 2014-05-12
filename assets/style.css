@@ -1,0 +1,254 @@
+/*//////////////////////////////////////////////////////////////////////////////////// ALL ////*/
+*{
+	margin: 0;
+	padding: 0;
+}
+
+title{
+	color: red;
+}
+
+body{
+	background: #13270B;
+	font-family: 'Source Code Pro', Arial, sans-serif;
+}
+
+p{
+	margin-left: 10px;
+	margin-top:10px;
+	margin-bottom:20px;
+}
+
+.rushkoff{
+	position: fixed;
+	top: 200px;
+	width: 600px;
+	height: 400px;
+	left: 50%;
+	margin-left: -300px;
+	font-weight: 300;
+	color:#00B945;
+}
+
+#container{
+	position: relative;
+	width: 600px;
+	height: 400px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.text{
+	cursor: default;
+	font-size: 10pt;
+	font-weight: 300;
+	position: fixed;
+	top: 150px;
+	width: 500px;
+	height: 300px;
+	left: 50%;
+	margin-left: -250px;
+	color: white;
+}
+
+.more, 
+.next{
+	top:50px;
+	font-size: 12pt;
+	color: #00B945;
+	cursor: pointer;
+}
+.more:hover, 
+.next:hover{
+	color: #E60006;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////// PAGE ONE ////*/
+
+#container img{
+	position: fixed;
+}
+
+
+#agreeOne{
+	left: 20%;
+	top: 10%;
+}
+
+#agreeTwo{
+	left: 30%;
+	top: 20%;
+}
+
+#agreeThree{
+	left: 50%;
+	top: 18%;
+}
+
+#agreeFour{
+	left: 20%;
+	top: 40%;
+}
+
+#agreeFive{
+	left: 35%;
+	top: 30%;
+}
+
+#agreeSix{
+	left: 30%;
+	top: 14%;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////// PAGE TWO ////*/
+
+#container2{
+	position: relative;
+	top: 100px;
+	/*border: blue 2px dotted;*/
+	width: 635px;
+	height: 400px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/*#container2 .more{
+	color: #00B945;
+	cursor: pointer;
+}*/
+
+.slot{
+	display: inline-block;
+	width: 210px;
+}
+
+.slot li{
+	display: inline-block;
+	/*border: blue 2px solid;*/
+	border-radius: 10px;
+}
+
+.slot li img{
+	border-radius: 10px;
+}
+
+.jSlots-wrapper {  
+    overflow: hidden;
+    height: 300px;
+    display: inline-block;
+    margin-left: auto;
+	margin-right: auto;
+}
+
+#slotButton{
+	position: relative;
+	width: 50px;
+	top:20px;
+	height: 20px;
+	/*width: 100px;*/
+	padding: 5px 10px 5px 10px;
+	border-radius: 5px;
+	color: white;
+	margin-left: auto;
+	margin-right: auto;
+	background: #EC1324;
+}
+
+#slotButton:hover{
+	background: #cc0000;
+	cursor: pointer;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////// PAGE THREE ////*/
+
+#phoneBase{
+	width: 300px;
+	height: 530px;
+	position: relative;
+	margin-top: 120px;
+	margin-right: auto;
+	margin-left: auto;
+	background: black;
+	border-radius: 20px;
+}
+
+#phoneScreen{
+	width: 260px;
+	margin-left:20px;
+	position: relative;
+	height: 420px;
+	top: 40px;
+	border-radius: 10px;
+	background: #4F5350;
+	/*box-shadow: 0px 0px 40px 10px #B4B2B2;*/
+}
+
+#phoneSlider{
+	position: relative;
+	margin-left: 10px;
+	top: 290px;
+	width: 180px;
+	/*height: 60px;*/
+	background: #B4B2B2;
+	border-radius: 10px;
+	border: none;
+}
+
+#phoneSliderBG{
+	position: relative;
+	margin-left: 10px;
+	top: 350px;
+	width: 240px;
+	height: 60px;
+	background: #B4B2B2;
+	border-radius: 10px;
+}
+
+#phoneSlider .ui-slider-handle { 
+	width: 60px;
+	height: 60px;
+	border-color: #729fcf; 
+	background: #E0DFDC;
+	top: 0px;
+	margin-left: 0px;
+	border: none;
+}
+#phoneSlider .ui-slider-handle:hover{
+	background: #C1C2BC;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////// PAGE THREE ////*/
+
+
+#container4{
+	position: relative;
+	width: 700px;
+	height: 400px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.blurryText{
+	text-shadow: 0px 0px 0px #000;
+	color: transparent;
+	/*background-color: blue;*/
+ 	transition: all 1s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
