@@ -2,19 +2,21 @@ $(document).ready(function(){
 
 	// var backgroundColour = '#FFF';
 
-	runPageFour();
+	runPageThree();
 
-	$('#pageThree').hide();
+	$('#pageFour').hide();
 	$('#pageTwo').hide();
 	$('#pageOne').hide();
 	$('#pageFive').hide();
 
-	var phoneBuzzInterval;
-	var popUpInterval;
 
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE ONE //
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// POP UPS //////
+	var popUpInterval;
 	function runPageOne(){
 		titleScroller('~~~~~~F.O.P.I.V.S.~~~~~~');
 		setBackground('#004604');
+
 		$('#pageOne').show();
 		$('#agreeOne').hide();
 		$('#agreeTwo').hide();
@@ -60,13 +62,13 @@ $(document).ready(function(){
 		});
 	}
 
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE TWO //
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// SLOT MACHINE //////
+
 	function runPageTwo(){
-		// backgroundColour = '#1A2881';
-		// $()
 		setBackground('#1A2881');
 		$('#pageTwo').show();
 		$('body').css('background','#0B0F46');
-		// $('.text').hide();
 		$('.more').hide();
 		$('.rushkoff').hide();
 
@@ -91,8 +93,14 @@ $(document).ready(function(){
 		});
 	}
 
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE THREE //
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PHONE BUZZ //////
+
+	var phoneBuzzInterval;
 	function runPageThree(){
 		setBackground('#6D2817');
+
+		// var audio = new Audio('assets/sounds/phoneVibrate.mp3');
 		$('#pageTwo').hide();
 		$('#pageThree').show();
 		$('body').css('background','#500D06');
@@ -144,13 +152,17 @@ $(document).ready(function(){
 	function buzzPhone(){
 		$('#phoneScreen').css({'background':'#EEE', 'box-shadow':'0px 0px 40px 10px #7D7D7D'});
 		phoneBuzzInterval = setInterval(function(){
+			$('#vibrate').trigger("play");
 			$('#phoneBase').trigger('startRumble');
 			setTimeout(function(){
+				$('#vibrate').trigger("stop");
 				$('#phoneBase').trigger('stopRumble');
 			}, 1000);
 		}, 2000);	
 	}//end page 3
 
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE FOUR //
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// MULTITASKING //////
 	var delay;
 	function runPageFour(){
 		titleScroller('jamina-mina ey eyyy walka walk eyy eyy');
@@ -161,13 +173,13 @@ $(document).ready(function(){
 		$('.text').hide();
 		$('.rushkoff').hide();
 
-		// console.log(result);
+		// getElementByID('#container4');
 
 		delay = Math.random()*5000;
 		setInterval(function(){
-			$('.blurryText').css({'text-shadow':'0px 0px 10px #000'});
+			$('.blurryText').css({'text-shadow':'0px 0px 10px #FFF'});
 			setTimeout(function(){
-				$('.blurryText').css({'text-shadow':'0px 0px 0px #000'});
+				$('.blurryText').css({'text-shadow':'0px 0px 5px #FFF'});
 				
 			},200);
 		},delay);
@@ -180,53 +192,64 @@ $(document).ready(function(){
 		}, 200);
 	}
 
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE FIVE //
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// OVERALL //////
+	function runPageFive(){
+		titleScroller('jamina-mina ey eyyy walka walk eyy eyy');
+		setBackground('#085A5F');	
+	}
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// SET BACKGROUND //
 	var text;
 	var result;
 	var newResult;
 	var width; 
-
+	var height; 
 	function setBackground(textColour){
 		$('.newDiv').remove();
 		$('.wrapper').remove();
 
-		text = "In our society, networked technologies are everywhere. Everyone is online all the time, through cell phones, computers, or even smart watches. In this digital age, I find myself feeling rather analog. By this I mean to say, I am aware of how much time I spend online, and I make a conscious decision to spend time offline. I read books and take notes on paper; I turn off my phone when I got to sleep; I turn off my computer when I don't plan on using it; My social media presence is quite low; I sketch out ideas for websites and other programming projects in physical sketchbooks before starting to work. Yet, even still, I am compelled to check my phone and my email on a regular basis, as if they control me, and not the other way around. For this reason, I decided to explore the ways in which we interact with technology in our daily lives.";
+		text = "In our society, networked technologies are everywhere. Everyone is online all the time, through cell phones, computers, or even smart watches. In this digital age, I find myself feeling rather analog. By this I mean to say, I am aware of how much time I spend online, and I make a conscious decision to spend time offline. I read books and take notes on paper; I turn off my phone when I got to sleep; I turn off my computer when I don't plan on using it; My social media presence is quite low; I sketch out ideas for websites and other programming projects in physical sketchbooks before starting to work. Yet, even still, I am compelled to check my phone and my email on a regular basis, as if they control me, and not the other way around. For this reason, I decided to explore the ways in which we interact with technology in our daily lives.  and I make a conscious decision to spend time offline. I read books and take notes on paper; I turn off my phone when I got to sleep. And then I make strange net art out of my professor's face and send it to my entire class, just to make sure this text is long enough.";
 		result = text.split("");
 		result.sort();
 		result = result.join("");
 		result = result.trim();
 
 
-		width = $(document).width();
+		width = window.innerWidth;
+		height = window.innerHeight;
 
 		$('body').append('<div class="wrapper"></div>');
 
 		var repeatBG = Math.ceil(width/95);
-		for(var i=0; i<repeatBG; i++){
-			$('.wrapper').append('<div class="newDiv"></div>');
-			$('.newDiv:nth-child('+(i+1)+')').css({
-				'width':'100px', 
-				'word-wrap':'break-word', 
-				'display':'inline-block', 
-				'color':textColour,
-				'font-weight':'100',
-				'line-height':'12px',
-				'position':'fixed',
-				'z-index':'-100',
-				'top':'0px',
-				'left': 95*i
-			});		
-		}
-
-
-		// $('.newDiv').html(result);	
+		// var repeatDown = Math.ceil(height/830);
+		// for(var j=0; j<repeatDown; i++){
+			for(var i=0; i<repeatBG; i++){
+				$('.wrapper').append('<div class="newDiv"></div>');
+				$('.newDiv:nth-child('+(i+1)+')').css({
+					'width':'100px', 
+					'word-wrap':'break-word', 
+					'display':'inline-block', 
+					'color':textColour,
+					'font-weight':'100',
+					'line-height':'12px',
+					'position':'fixed',
+					'z-index':'-100',
+					'top':'0px',
+					'left': 95*i
+				});		
+			}
+		// }
 	}
-	backgroundScroller(result); //, textColour);
 
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// BACKGROUND SCROLL //
+	
+	backgroundScroller(result); 
 	function backgroundScroller(text){	
 		$('.newDiv').html(text);
 		setTimeout(function(){
-			backgroundScroller(text.substr(10) + text.substr(0, 10)); //, textColour);
-			console.log(text);
+			backgroundScroller(text.substr(10) + text.substr(0, 10));
+			// console.log(text);
 			newResult = text;
 		},200);
 	}
