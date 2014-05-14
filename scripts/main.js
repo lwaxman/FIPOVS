@@ -3,11 +3,11 @@ $(document).ready(function(){
 	// var backgroundColour = '#FFF';
 	// pickNewPage();
 
-	runPageFour();
+	runPageTwo();
 	$('#pageOne').hide();
-	$('#pageTwo').hide();
+	$('#pageTwo').show();
 	$('#pageThree').hide();
-	$('#pageFour').show();
+	$('#pageFour').hide();
 	$('#pageFive').hide();
 	$('#endPage').hide();
 	titleScroller('you are what you eat ');
@@ -35,6 +35,7 @@ $(document).ready(function(){
 		currentPage = 1;
 		console.log('this is PAGE ONE');
 		setBackground('#004604');
+		$('body').css('background','#13270B');
 
 		$('#pageOne').show();
 		$('#pageTwo').hide();
@@ -58,6 +59,7 @@ $(document).ready(function(){
 
 		popUpInterval = setInterval(function(){
 			$('#container').append('<img src="assets/images/agreement'+count+'.png" class="image" id="agree'+idCount+'" alt="agree">');
+			$('#alert').trigger('play');
 			$('#agree'+idCount).css({
 				'position':'absolute',
 				'left': Math.random()*60 + '%',
@@ -70,12 +72,14 @@ $(document).ready(function(){
 
 			$('.image').click(function(){ 
 				$('#'+this.id).remove();
+				$('#closeAlert').trigger('play');
+
 				if( $('#container').is(':empty') ){
 					$('#container').remove();
 				}
 			});
 
-		},Math.random()*100);
+		},Math.random()*200);
 
 		$('.more').on('click', function(){
 			$('.text').remove();
@@ -85,7 +89,7 @@ $(document).ready(function(){
 		$('.next').on('click', function(){
 			$('#pageOne').remove();
 			// pickNewPage();
-			runPageTwo();
+			runPageThree();
 		});
 	}
 
@@ -130,7 +134,7 @@ $(document).ready(function(){
 		});
 
 		$('.next').on('click', function(){
-			runPageThree();
+			runPageOne();
 			// pickNewPage();
 		});
 	}
@@ -162,6 +166,9 @@ $(document).ready(function(){
 		$('#phoneScreen img').hide();
 		$('.more').hide();
 
+		$('#phoneSlider').show();
+		$('#phoneSliderBG').show();
+
 		$('#phoneBase').jrumble();
 		$('#phoneSlider').slider({
 			orientation: "horizontal",
@@ -188,6 +195,7 @@ $(document).ready(function(){
 						$('#phoneScreen img').show();
 						$('#heartbeat').trigger('play');
 						$('#vibrate').trigger('play');
+						$('#vibrate').trigger('stop');
 						$('#phoneScreen').css({'background':'white', 'box-shadow':'0px 0px 40px 10px #7D7D7D'});
 						$('.more').show();
 
@@ -198,6 +206,7 @@ $(document).ready(function(){
 
 						$('.next').on('click', function(){
 							$('#heartbeat').remove();
+							$('#vibrate').remove();
 							runPageFour();
 							// pickNewPage();
 						});
@@ -220,7 +229,7 @@ $(document).ready(function(){
 	}//end page 3
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE FOUR //
-	////////////////////////////////////////////////////////////////////////////////////////////////////// MULTITASKING //////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////// DISTRACTION //////
 	
 	var delay;
 	function runPageFour(){
@@ -234,10 +243,11 @@ $(document).ready(function(){
 		$('#pageFour').show();
 		$('#pageFive').hide();
 		$('#endPage').hide();
+		$('.more').show();
 
 		$('body').css('background','#064550');
-		$('.text').hide();
-		$('.rushkoff').hide();
+		// $('.text').hide();
+		// $('.rushkoff').show();
 		$('#back').hide();
 
 		// getElementByID('#container4');
@@ -245,20 +255,33 @@ $(document).ready(function(){
 		delay = Math.random()*5000;
 		setInterval(function(){
 			$('.blurryText').css({'text-shadow':'0px 0px 10px #000'});
-			$('#burryMore').css({'text-shadow':'0px 0px 10px #24BA02'});
+			// $('#burryMore').css({'text-shadow':'0px 0px 10px #24BA02'});
 			setTimeout(function(){
 				$('.blurryText').css({'text-shadow':'0px 0px 0px #000'});
-				$('#burryMore').css({'text-shadow':'0px 0px 0px #24BA02'});
+				// $('#burryMore').css({'text-shadow':'0px 0px 0px #24BA02'});
 			},200);
 		},delay);
+
+
+		// for(var q=0; q<30; q++){
+		// 	$('#container4').append('<img src="http://placekitten.com/'+ Math.round(Math.random()*500) +'/'+Math.round(Math.random()*500)+'" class="kitten" id="kitty'+q+'" alt="kitty">');
+		// 	setTimeout(function(){
+		// 		$('#kitty'+q).css({
+		// 			'position':'fixed',
+		// 			'left': Math.random()*1000,
+		// 			'top': Math.random()*800
+		// 		});
+		// 	}, 1500);	
+
+		// }
+
+		$('.more').on('click', function(){
+			runEndPage();
+		});
 	}
 
-	$('.more').on('click', function(){
-
-	});
-
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE FIVE //
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////// OVERALL //////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////// INFORMATION //////
 	
 	function runPageFive(){
 		clearInterval(phoneBuzzInterval);
