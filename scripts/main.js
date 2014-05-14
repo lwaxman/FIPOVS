@@ -3,15 +3,29 @@ $(document).ready(function(){
 	// var backgroundColour = '#FFF';
 	// pickNewPage();
 
-	runPageTwo();
+	runPageFour();
 	$('#pageOne').hide();
-	$('#pageTwo').show();
+	$('#pageTwo').hide();
 	$('#pageThree').hide();
-	$('#pageFour').hide();
+	$('#pageFour').show();
 	$('#pageFive').hide();
+	$('#endPage').hide();
 	titleScroller('you are what you eat ');
 
 	var currentPage;
+
+	$('#info').hover(function(){
+		$('#info').html('more information');
+		// runPageFive();
+	},function(){
+		$('#info').html('?');
+	});
+
+	$('#info').on('click', function(){
+		runPageFive();
+	});
+
+	console.log(currentPage);
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE ONE //
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// POP UPS //////
@@ -88,6 +102,7 @@ $(document).ready(function(){
 		$('#pageThree').hide();
 		$('#pageFour').hide();
 		$('#pageFive').hide();
+		$('#endPage').hide();
 
 		$('body').css('background','#0B0F46');
 		$('.more').hide();
@@ -121,7 +136,7 @@ $(document).ready(function(){
 	}
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE THREE //
-// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PHONE BUZZ //////
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// HEART BUZZ //////
 
 	var phoneBuzzInterval;
 	function runPageThree(){
@@ -136,6 +151,7 @@ $(document).ready(function(){
 		$('#pageThree').show();
 		$('#pageFour').hide();
 		$('#pageFive').hide();
+		$('#endPage').hide();
 
 
 		$('#container3').show();
@@ -166,13 +182,13 @@ $(document).ready(function(){
 				if(position>=90){
 					$('#phoneSlider').slider('disable');
 					setTimeout(function(){
-						$('#heartbeat').trigger("play");
-						console.log( $('#heartbeat').volume );
-						$('#phoneSlider').hide();
-						$('#phoneSliderBG').hdie();
-						$('#phoneScreen img').show();
-						$('#phoneScreen').css({'background':'white', 'box-shadow':'0px 0px 40px 10px #7D7D7D'});
 						clearInterval(phoneBuzzInterval);
+						$('#phoneSlider').hide();
+						$('#phoneSliderBG').hide();
+						$('#phoneScreen img').show();
+						$('#heartbeat').trigger('play');
+						$('#vibrate').trigger('play');
+						$('#phoneScreen').css({'background':'white', 'box-shadow':'0px 0px 40px 10px #7D7D7D'});
 						$('.more').show();
 
 						$('.more').on('click', function(){
@@ -181,18 +197,19 @@ $(document).ready(function(){
 						});
 
 						$('.next').on('click', function(){
-							$('#heartbeat').trigger("stop");
+							$('#heartbeat').remove();
 							runPageFour();
 							// pickNewPage();
 						});
 					},200);
 				}
 			});
-		},2000);
+		},1500);
 	}
 	function buzzPhone(){
 		$('#phoneScreen').css({'background':'#EEE', 'box-shadow':'0px 0px 40px 10px #7D7D7D'});
 		phoneBuzzInterval = setInterval(function(){
+			
 			$('#vibrate').trigger("play");
 			$('#phoneBase').trigger('startRumble');
 			setTimeout(function(){
@@ -216,6 +233,7 @@ $(document).ready(function(){
 		$('#pageThree').hide();
 		$('#pageFour').show();
 		$('#pageFive').hide();
+		$('#endPage').hide();
 
 		$('body').css('background','#064550');
 		$('.text').hide();
@@ -235,12 +253,9 @@ $(document).ready(function(){
 		},delay);
 	}
 
-	function titleScroller(text){
-		document.title = text;
-		setTimeout(function () {
-			titleScroller(text.substr(1) + text.substr(0, 1));
-		}, 200);
-	}
+	$('.more').on('click', function(){
+
+	});
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE FIVE //
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// OVERALL //////
@@ -253,6 +268,7 @@ $(document).ready(function(){
 		$('#pageThree').hide();
 		$('#pageFour').hide();
 		$('#pageFive').show();
+		$('#endPage').hide();
 
 		$('#back').show();
 
@@ -279,10 +295,37 @@ $(document).ready(function(){
 			if(currentPage==2) runPageTwo();
 			if(currentPage==3) runPageThree();
 			if(currentPage==4) runPageFour();
+			if(currentPage==5) runEndPage();
 		});
 
 		pageScroll();
 		// $('#myDiv').html(code);
+	}
+
+	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// END PAGE //
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// JS FIDDLE //////
+	
+	function runEndPage(){
+		currentPage=5;
+		$('#back').hide();
+		$('#pageOne').hide();
+		$('#pageTwo').hide();
+		$('#pageThree').hide();
+		$('#pageFour').hide();
+		$('#pageFive').hide();
+		$('#endPage').show();
+		setBackground('#34618A');
+		$('body').css('background','#10234A');
+	}
+
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// TITLE SCROLL //
+
+	function titleScroller(text){
+		document.title = "";
+		document.title = text;
+		setTimeout(function () {
+			titleScroller(text.substr(1) + text.substr(0, 1));
+		}, 200);
 	}
 
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// BACKGROUND SCROLL //
@@ -363,21 +406,6 @@ $(document).ready(function(){
 			});		
 		}
 	}
-
-	$('#info').hover(function(){
-		$('#info').html('more information');
-		// runPageFive();
-	},function(){
-		$('#info').html('?');
-	});
-
-	$('#info').on('click', function(){
-		runPageFive();
-	});
-
-	console.log(currentPage);
-
-
 
 })//end doc.ready
 
