@@ -3,7 +3,7 @@ PImage thisImage;
 void setup(){
 	background(255);
 	size((window.innerWidth*0.8),window.innerHeight);
-	thisImage = loadImage('assets/images/notification_small-01.png')
+	thisImage = loadImage("http://localhost:8888/rushkoff/assets/images/notification_small-01.png", "png");
 }
 
 void draw(){s
@@ -14,4 +14,3 @@ void draw(){s
 		// image(thisImage, map(mouseY, 0, window.innerHeight, 0, window.innerWidth*0.8), map(mouseX, 0, window.innerWidth*0.8, 0, window.innerHeight));
 	}
 }
-

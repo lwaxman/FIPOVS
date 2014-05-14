@@ -59,6 +59,33 @@ p{
 	color: #E60006;
 }
 
+#info{
+	background: black;
+	font-size: 12pt;
+	font-weight: 200;
+	color: white;
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+}
+#info:hover{
+	color: red;
+}
+
+#back{
+	background: black;
+	font-size: 12pt;
+	font-weight: 200;
+	color: white;
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+	z-index: 100;
+}
+#back:hover{
+	color: red;
+}
+
 /*//////////////////////////////////////////////////////////////////////////////////// PAGE ONE ////*/
 
 #container{
@@ -239,7 +266,8 @@ p{
 #container4{
 	position: relative;
 	font-weight: 200;
-	width: 700px;
+	/*top: 100px;*/
+	width: 1200px;
 	height: 400px;
 	margin-right: auto;
 	margin-left: auto;
@@ -248,36 +276,78 @@ p{
 #container4 h2,
 #container4 h3{
 	margin-left: 0px;
-	margin-top: 20px;
+	/*margin-top: 20px;*/
 	margin-bottom: 20px;
 	font-size: 14pt;
 }
 
 .blurryText{
-	text-shadow: 0px 0px 10px #FFF;
+	text-shadow: 0px 0px 10px #000;
 	font-weight: 200;
 	color: transparent;
 	font-size: 12pt;
  	transition: all 1s;
 }
 
+#blurryMore{
+	color: transparent;
+	text-shadow: 0px 0px 10px #24BA02;
+	transition: all 1s;
+}
+/*#blurryMore:hover{
+	text-shadow: 0px 0px 10px #E60006;
+}*/
+
 #readThis{
-	position: relative;
+	position: absolute;
 	width: 200px;
 	top: 100px;
-	height: 500px;
-	display: inline-block;
-	border: yellow 2px solid;
+	left: 200px;
+	z-index: 1;
 }
 
-#drawThis{
+#canvasWrapper{
+	width: 80%;
 	position: relative;
-	width: 440px;
-	top: -210px;
-	height: 500px;
-	display: inline-block;
-	border: yellow 2px solid;
+	margin-right: auto;
+	margin-left: auto;
 }
+
+/*////////////////////////////////////////////////////////////////////////////////// PAGE FIVE ////*/
+
+#container5{
+	position: relative;
+	font-weight: 200;
+	/*top: 100px;*/
+	width: 80%;
+	height: 400px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#myDiv{
+	display: inline-block;
+	margin-top: 100px;
+	width: 350px;
+	color: white;
+	/*background: blue;*/
+}
+
+#textArea{
+	display: inline-block;
+	margin-top: 100px;
+	width: 350px;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -3,20 +3,23 @@ $(document).ready(function(){
 	// var backgroundColour = '#FFF';
 	// pickNewPage();
 
-	runPageFour();
+	runPageTwo();
 	$('#pageOne').hide();
-	$('#pageTwo').hide();
+	$('#pageTwo').show();
 	$('#pageThree').hide();
-	$('#pageFour').show();
+	$('#pageFour').hide();
 	$('#pageFive').hide();
+	titleScroller('you are what you eat ');
 
+	var currentPage;
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE ONE //
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// POP UPS //////
+	
 	var popUpInterval;
 	function runPageOne(){
+		currentPage = 1;
 		console.log('this is PAGE ONE');
-		titleScroller('~~~~~~F.O.P.I.V.S.~~~~~~');
 		setBackground('#004604');
 
 		$('#pageOne').show();
@@ -33,6 +36,7 @@ $(document).ready(function(){
 		$('#agreeSix').hide();
 		// $('.text').hide();
 		$('.rushkoff').hide();
+		$('#back').hide();
 
 		var count = 1;
 		var idCount = 1;
@@ -51,15 +55,6 @@ $(document).ready(function(){
 			if(idCount>10) clearInterval(popUpInterval);
 
 			$('.image').click(function(){ 
-				// $('#container').append('<img src="assets/images/agreement'+count+'.png" class="image" id="agree'+newCount+'" alt="agree">');
-				// $('#agree'+newCount).css({
-				// 	'position':'absolute',
-				// 	'left': Math.random()*60 + '%',
-				// 	'top': Math.random()*80 + '%'
-				// });
-				// count++;
-				// newCount++;
-				// if(count>6) count=1;
 				$('#'+this.id).remove();
 				if( $('#container').is(':empty') ){
 					$('#container').remove();
@@ -84,6 +79,7 @@ $(document).ready(function(){
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// SLOT MACHINE //////
 
 	function runPageTwo(){
+		currentPage = 2;
 		console.log('this is PAGE TWO');
 		setBackground('#1A2881');
 		
@@ -96,6 +92,7 @@ $(document).ready(function(){
 		$('body').css('background','#0B0F46');
 		$('.more').hide();
 		$('.rushkoff').hide();
+		$('#back').hide();
 
 		$('.slot').jSlots({  
 			winnerNumber : 3,
@@ -106,6 +103,10 @@ $(document).ready(function(){
 				$('.more').show();
 			}
 		});  
+
+		$('#slotButton').on('click', function(){
+			$('#slotSound').trigger("play");
+		});
 
 		$('.more').on('click', function(){
 			console.log('clicky clicky');
@@ -124,6 +125,7 @@ $(document).ready(function(){
 
 	var phoneBuzzInterval;
 	function runPageThree(){
+		currentPage = 3;
 		console.log('this is PAGE THREE');
 		setBackground('#6D2817');
 		$('body').css('background','#500D06');
@@ -140,6 +142,7 @@ $(document).ready(function(){
 
 		$('.text').hide();
 		$('.rushkoff').hide();
+		$('#back').hide();
 		$('#phoneScreen img').hide();
 		$('.more').hide();
 
@@ -163,19 +166,22 @@ $(document).ready(function(){
 				if(position>=90){
 					$('#phoneSlider').slider('disable');
 					setTimeout(function(){
-						$('#phoneSlider').remove();
-						$('#phoneSliderBG').remove();
+						$('#heartbeat').trigger("play");
+						console.log( $('#heartbeat').volume );
+						$('#phoneSlider').hide();
+						$('#phoneSliderBG').hdie();
 						$('#phoneScreen img').show();
 						$('#phoneScreen').css({'background':'white', 'box-shadow':'0px 0px 40px 10px #7D7D7D'});
 						clearInterval(phoneBuzzInterval);
 						$('.more').show();
 
 						$('.more').on('click', function(){
-							$('#container3').remove();
+							$('#container3').hide();
 							$('.rushkoff').show();
 						});
 
 						$('.next').on('click', function(){
+							$('#heartbeat').trigger("stop");
 							runPageFour();
 							// pickNewPage();
 						});
@@ -198,10 +204,11 @@ $(document).ready(function(){
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE FOUR //
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// MULTITASKING //////
+	
 	var delay;
 	function runPageFour(){
+		currentPage = 4;
 		console.log('this is PAGE FOUR');
-		titleScroller('jamina-mina ey eyyy walka walk eyy eyy');
 		setBackground('#085A5F');
 
 		$('#pageOne').hide();
@@ -213,14 +220,17 @@ $(document).ready(function(){
 		$('body').css('background','#064550');
 		$('.text').hide();
 		$('.rushkoff').hide();
+		$('#back').hide();
 
 		// getElementByID('#container4');
 
 		delay = Math.random()*5000;
 		setInterval(function(){
-			$('.blurryText').css({'text-shadow':'0px 0px 10px #FFF'});
+			$('.blurryText').css({'text-shadow':'0px 0px 10px #000'});
+			$('#burryMore').css({'text-shadow':'0px 0px 10px #24BA02'});
 			setTimeout(function(){
-				$('.blurryText').css({'text-shadow':'0px 0px 0px #FFF'});
+				$('.blurryText').css({'text-shadow':'0px 0px 0px #000'});
+				$('#burryMore').css({'text-shadow':'0px 0px 0px #24BA02'});
 			},200);
 		},delay);
 	}
@@ -234,7 +244,9 @@ $(document).ready(function(){
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE FIVE //
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// OVERALL //////
+	
 	function runPageFive(){
+		clearInterval(phoneBuzzInterval);
 
 		$('#pageOne').hide();
 		$('#pageTwo').hide();
@@ -242,12 +254,76 @@ $(document).ready(function(){
 		$('#pageFour').hide();
 		$('#pageFive').show();
 
+		$('#back').show();
+
 		console.log('this is PAGE FIVE');
-		titleScroller('jamina-mina ey eyyy walka walk eyy eyy');
-		setBackground('#085A5F');	
+		titleScroller('here is some more information. I hope you find it very helpful. ');
+		setBackground('#085A5F');
+		$('body').css('background','#04312F');
+		
+		$.ajax({
+	        async:false,
+	        url: 'scripts/main.js',
+	        dataType: 'text',
+	        success: function(data){
+		        $('#myDiv').append('<pre>'+data+'</pre>');
+            }
+        });
+
+		$('#back').on('click', function(){
+			
+			titleScroller('you are what you eat ');
+			$('#back').hide();
+			$('#pageFive').hide();
+			if(currentPage==1) runPageOne();
+			if(currentPage==2) runPageTwo();
+			if(currentPage==3) runPageThree();
+			if(currentPage==4) runPageFour();
+		});
+
+		pageScroll();
+		// $('#myDiv').html(code);
 	}
 
-// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// SET BACKGROUND //
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// BACKGROUND SCROLL //
+	
+	backgroundScroller(result); 
+	function backgroundScroller(text){	
+		$('.newDiv').html(text);
+		setTimeout(function(){
+			backgroundScroller(text.substr(10) + text.substr(0, 10));
+			// console.log(text);
+			newResult = text;
+		},200);
+	}
+	backgroundScroller(newResult); 
+
+	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PICK NEW PAGE //
+
+	// function pickNewPage(){
+
+		// remove page after moving to next one. create array of remaining pages, choose one at random;
+
+		// var newPageNumber = Math.round(Math.random() * (5 - 1) + 1);
+		// console.log(newPageNumber);
+		// if(newPageNumber==1) runPageOne();
+		// if(newPageNumber==2) runPageTwo();
+		// if(newPageNumber==3) runPageThree();
+		// if(newPageNumber==4) runPageFour();
+		// if(newPageNumber==5) runPageFive();
+
+	// }
+
+	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE SCROLL //
+	
+	var scrolldelay;
+	function pageScroll(){
+	    window.scrollBy(0,50);
+	    scrolldelay = setTimeout('pageScroll()',10);
+	}
+
+	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// SET BACKGROUND //
+	
 	var text;
 	var result;
 	var newResult;
@@ -270,52 +346,38 @@ $(document).ready(function(){
 		$('body').append('<div class="wrapper"></div>');
 
 		var repeatBG = Math.ceil(width/95);
-		// var repeatDown = Math.ceil(height/830);
-		// for(var j=0; j<repeatDown; i++){
-			for(var i=0; i<repeatBG; i++){
-				$('.wrapper').append('<div class="newDiv"></div>');
-				$('.newDiv:nth-child('+(i+1)+')').css({
-					'width':'100px', 
-					'word-wrap':'break-word', 
-					'display':'inline-block', 
-					'color':textColour,
-					'font-weight':'100',
-					'line-height':'12px',
-					'position':'fixed',
-					'z-index':'-100',
-					'top':'0px',
-					'left': 95*i
-				});		
-			}
-		// }
+
+		for(var i=0; i<repeatBG; i++){
+			$('.wrapper').append('<div class="newDiv"></div>');
+			$('.newDiv:nth-child('+(i+1)+')').css({
+				'width':'100px', 
+				'word-wrap':'break-word', 
+				'display':'inline-block', 
+				'color':textColour,
+				'font-weight':'100',
+				'line-height':'12px',
+				'position':'fixed',
+				'z-index':'-100',
+				'top':'0px',
+				'left': 95*i
+			});		
+		}
 	}
 
-	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// BACKGROUND SCROLL //
-	
-	backgroundScroller(result); 
-	function backgroundScroller(text){	
-		$('.newDiv').html(text);
-		setTimeout(function(){
-			backgroundScroller(text.substr(10) + text.substr(0, 10));
-			// console.log(text);
-			newResult = text;
-		},200);
-	}
-	backgroundScroller(newResult); 
+	$('#info').hover(function(){
+		$('#info').html('more information');
+		// runPageFive();
+	},function(){
+		$('#info').html('?');
+	});
 
-	// function pickNewPage(){
-	// 	var newPageNumber = Math.round(Math.random() * (5 - 1) + 1);
-	// 	console.log(newPageNumber);
-	// 	if(newPageNumber==1) runPageOne();
-	// 	if(newPageNumber==2) runPageTwo();
-	// 	if(newPageNumber==3) runPageThree();
-	// 	if(newPageNumber==4) runPageFour();
-	// 	if(newPageNumber==5) runPageFive();
+	$('#info').on('click', function(){
+		runPageFive();
+	});
 
-	// }
+	console.log(currentPage);
 
 
-	//remove page after moving to next one. create array of remaining pages, choose one at random;
 
 })//end doc.ready
 
