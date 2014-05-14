@@ -248,9 +248,8 @@ p{
 }
 
 .blurryText{
-	text-shadow: 0px 0px 0px #000;
+	text-shadow: 0px 0px 10px #FFF;
 	color: transparent;
-	background: white;
  	transition: all 1s;
 }
 
