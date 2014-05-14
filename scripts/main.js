@@ -1,12 +1,13 @@
 $(document).ready(function(){
 
 	// var backgroundColour = '#FFF';
+	// pickNewPage();
 
-	runPageThree();
-
-	$('#pageFour').hide();
-	$('#pageTwo').hide();
+	runPageFour();
 	$('#pageOne').hide();
+	$('#pageTwo').hide();
+	$('#pageThree').hide();
+	$('#pageFour').show();
 	$('#pageFive').hide();
 
 
@@ -14,10 +15,16 @@ $(document).ready(function(){
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// POP UPS //////
 	var popUpInterval;
 	function runPageOne(){
+		console.log('this is PAGE ONE');
 		titleScroller('~~~~~~F.O.P.I.V.S.~~~~~~');
 		setBackground('#004604');
 
 		$('#pageOne').show();
+		$('#pageTwo').hide();
+		$('#pageThree').hide();
+		$('#pageFour').hide();
+		$('#pageFive').hide();
+
 		$('#agreeOne').hide();
 		$('#agreeTwo').hide();
 		$('#agreeThree').hide();
@@ -29,7 +36,7 @@ $(document).ready(function(){
 
 		var count = 1;
 		var idCount = 1;
-		var delay = 500;
+		var newCount = 1;
 
 		popUpInterval = setInterval(function(){
 			$('#container').append('<img src="assets/images/agreement'+count+'.png" class="image" id="agree'+idCount+'" alt="agree">');
@@ -44,12 +51,22 @@ $(document).ready(function(){
 			if(idCount>10) clearInterval(popUpInterval);
 
 			$('.image').click(function(){ 
+				// $('#container').append('<img src="assets/images/agreement'+count+'.png" class="image" id="agree'+newCount+'" alt="agree">');
+				// $('#agree'+newCount).css({
+				// 	'position':'absolute',
+				// 	'left': Math.random()*60 + '%',
+				// 	'top': Math.random()*80 + '%'
+				// });
+				// count++;
+				// newCount++;
+				// if(count>6) count=1;
 				$('#'+this.id).remove();
 				if( $('#container').is(':empty') ){
 					$('#container').remove();
 				}
 			});
-		},delay);
+
+		},Math.random()*100);
 
 		$('.more').on('click', function(){
 			$('.text').remove();
@@ -58,6 +75,7 @@ $(document).ready(function(){
 
 		$('.next').on('click', function(){
 			$('#pageOne').remove();
+			// pickNewPage();
 			runPageTwo();
 		});
 	}
@@ -66,8 +84,15 @@ $(document).ready(function(){
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// SLOT MACHINE //////
 
 	function runPageTwo(){
+		console.log('this is PAGE TWO');
 		setBackground('#1A2881');
+		
+		$('#pageOne').hide();
 		$('#pageTwo').show();
+		$('#pageThree').hide();
+		$('#pageFour').hide();
+		$('#pageFive').hide();
+
 		$('body').css('background','#0B0F46');
 		$('.more').hide();
 		$('.rushkoff').hide();
@@ -90,6 +115,7 @@ $(document).ready(function(){
 
 		$('.next').on('click', function(){
 			runPageThree();
+			// pickNewPage();
 		});
 	}
 
@@ -98,12 +124,20 @@ $(document).ready(function(){
 
 	var phoneBuzzInterval;
 	function runPageThree(){
+		console.log('this is PAGE THREE');
 		setBackground('#6D2817');
+		$('body').css('background','#500D06');
 
 		// var audio = new Audio('assets/sounds/phoneVibrate.mp3');
+		$('#pageOne').hide();
 		$('#pageTwo').hide();
 		$('#pageThree').show();
-		$('body').css('background','#500D06');
+		$('#pageFour').hide();
+		$('#pageFive').hide();
+
+
+		$('#container3').show();
+
 		$('.text').hide();
 		$('.rushkoff').hide();
 		$('#phoneScreen img').hide();
@@ -143,6 +177,7 @@ $(document).ready(function(){
 
 						$('.next').on('click', function(){
 							runPageFour();
+							// pickNewPage();
 						});
 					},200);
 				}
@@ -165,10 +200,16 @@ $(document).ready(function(){
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// MULTITASKING //////
 	var delay;
 	function runPageFour(){
+		console.log('this is PAGE FOUR');
 		titleScroller('jamina-mina ey eyyy walka walk eyy eyy');
 		setBackground('#085A5F');
+
+		$('#pageOne').hide();
+		$('#pageTwo').hide();
 		$('#pageThree').hide();
 		$('#pageFour').show();
+		$('#pageFive').hide();
+
 		$('body').css('background','#064550');
 		$('.text').hide();
 		$('.rushkoff').hide();
@@ -179,8 +220,7 @@ $(document).ready(function(){
 		setInterval(function(){
 			$('.blurryText').css({'text-shadow':'0px 0px 10px #FFF'});
 			setTimeout(function(){
-				$('.blurryText').css({'text-shadow':'0px 0px 5px #FFF'});
-				
+				$('.blurryText').css({'text-shadow':'0px 0px 0px #FFF'});
 			},200);
 		},delay);
 	}
@@ -195,6 +235,14 @@ $(document).ready(function(){
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PAGE FIVE //
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// OVERALL //////
 	function runPageFive(){
+
+		$('#pageOne').hide();
+		$('#pageTwo').hide();
+		$('#pageThree').hide();
+		$('#pageFour').hide();
+		$('#pageFive').show();
+
+		console.log('this is PAGE FIVE');
 		titleScroller('jamina-mina ey eyyy walka walk eyy eyy');
 		setBackground('#085A5F');	
 	}
@@ -255,6 +303,16 @@ $(document).ready(function(){
 	}
 	backgroundScroller(newResult); 
 
+	// function pickNewPage(){
+	// 	var newPageNumber = Math.round(Math.random() * (5 - 1) + 1);
+	// 	console.log(newPageNumber);
+	// 	if(newPageNumber==1) runPageOne();
+	// 	if(newPageNumber==2) runPageTwo();
+	// 	if(newPageNumber==3) runPageThree();
+	// 	if(newPageNumber==4) runPageFour();
+	// 	if(newPageNumber==5) runPageFive();
+
+	// }
 
 
 	//remove page after moving to next one. create array of remaining pages, choose one at random;

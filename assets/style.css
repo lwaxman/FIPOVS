@@ -11,12 +11,14 @@ title{
 body{
 	background: #13270B;
 	font-family: 'Source Code Pro', Arial, sans-serif;
+	cursor: url(images/cursor_arrow_small.png), auto;
 }
 
 p{
 	margin-left: 10px;
 	margin-top:10px;
 	margin-bottom:20px;
+	cursor: url(images/cursor_arrow_small.png), auto;
 }
 
 .rushkoff{
@@ -27,14 +29,14 @@ p{
 	left: 50%;
 	margin-left: -300px;
 	font-weight: 300;
-	color:#00B945;
+	color:#24BA02;
 }
 
 .text{
 	cursor: default;
 	font-size: 10pt;
 	font-weight: 300;
-	position: fixed;
+	position: absolute;
 	top: 150px;
 	width: 500px;
 	height: 300px;
@@ -47,8 +49,10 @@ p{
 .next{
 	top:50px;
 	font-size: 12pt;
-	color: #00B945;
+	color: #24BA02;
 	cursor: pointer;
+	display: inline-block;
+	margin-bottom: 200px;
 }
 .more:hover, 
 .next:hover{
@@ -234,6 +238,7 @@ p{
 
 #container4{
 	position: relative;
+	font-weight: 200;
 	width: 700px;
 	height: 400px;
 	margin-right: auto;
@@ -244,13 +249,34 @@ p{
 #container4 h3{
 	margin-left: 0px;
 	margin-top: 20px;
-	margin-bottom: 20px
+	margin-bottom: 20px;
+	font-size: 14pt;
 }
 
 .blurryText{
 	text-shadow: 0px 0px 10px #FFF;
+	font-weight: 200;
 	color: transparent;
+	font-size: 12pt;
  	transition: all 1s;
+}
+
+#readThis{
+	position: relative;
+	width: 200px;
+	top: 100px;
+	height: 500px;
+	display: inline-block;
+	border: yellow 2px solid;
+}
+
+#drawThis{
+	position: relative;
+	width: 440px;
+	top: -210px;
+	height: 500px;
+	display: inline-block;
+	border: yellow 2px solid;
 }
 
 
