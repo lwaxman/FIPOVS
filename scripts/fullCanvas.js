@@ -6,7 +6,7 @@ void setup(){
 	// thisImage = loadImage("http://localhost:8888/rushkoff/assets/images/notification_small-01.png", "png");
 }
 
-void draw(){s
+void draw(){
 	// image(thisImage, 30,30);
 	if(mousePressed){
 		noStroke();
